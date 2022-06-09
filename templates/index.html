@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-#2
+{#//2#}
 {% block content %}
     <div class="category-con">
       <div class="category-banner">
@@ -9,6 +9,7 @@
         </div>
       </div>
     </div>
+{#//3#}
     <div class="floors">
       <div class="sk">
         <div class="sk_inner w1200">
@@ -20,6 +21,7 @@
           <div class="sk_bd">
             <div class="layui-carousel" id="test1">
               <div carousel-item>
+
               <div class="item-box">
               {% for c in commodityInfos %}
                   {% if forloop.counter < 5 %}
@@ -57,7 +59,7 @@
         </div>
       </div>
     </div>
-
+{#//4#}
     <div class="product-cont w1200" id="product-cont">
       <div class="product-item product-item1 layui-clear">
         <div class="left-title">
@@ -106,7 +108,7 @@
       </div>
     </div>
 {% endblock content %}
-
+{#######5#}
 {% block footer %}
   <div class="footer">
     <div class="ng-promise-box">

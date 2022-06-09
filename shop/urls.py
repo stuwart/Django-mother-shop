@@ -8,8 +8,7 @@ urlpatterns = [
     path('', include(('index.urls', 'index'), namespace='index')),
     path('commodity', include(('commodity.urls', 'commodity'), namespace='commodity')),
     path('shopper', include(('shopper.urls', 'shopper'), namespace='shopper')),
-
-    # 配置媒体文件夹的路由信息
+    # 配置媒体资源的路由信息
     re_path('media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}, name='media'),
 
 ]

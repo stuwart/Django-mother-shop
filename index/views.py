@@ -1,49 +1,64 @@
 from django.shortcuts import render
 from commodity.models import *
-from django.views.generic.base import TemplateView
 
 
 # Create your views here.
-
 def indexView(request):
     title = '首页'
-    classContent = ' '
+    classContent = ''
     commodityInfos = CommodityInfos.objects.order_by('-sold').all()[:8]
 
     types = Types.objects.all()
+    # 宝宝服饰
     cl = [x.seconds for x in types if x.firsts == '儿童服饰']
     clothes = CommodityInfos.objects.filter(types__in=cl).order_by('-sold')[:5]
+    # 奶粉辅食
     fl = [x.seconds for x in types if x.firsts == '奶粉辅食']
     food = CommodityInfos.objects.filter(types__in=fl).order_by('-sold')[:5]
+    # 宝宝用品
     gl = [x.seconds for x in types if x.firsts == '儿童用品']
     goods = CommodityInfos.objects.filter(types__in=gl).order_by('-sold')[:5]
     return render(request, 'index.html', locals())
 
 
-class indexClassView(TemplateView):
-    template_name = 'index.html'  # 设置模板名，意思为网页内容由'index.html'生成
-    template_engine = None  # 设置解析模板的模板引擎 ， None为默认
-    content_type = None  # 设置相应内容的数据格式，None为使用text/html格式
-    extra_context = {'title': '首页', 'classContent': ''}  # 设置的额外变量
+from django.views.generic.base import TemplateView
+from commodity.models import *
 
-    def get_context_data(self, **kwargs):  # 获取属性extra_content的值
+
+class indexClassView(TemplateView):
+    template_name = 'index.html'
+    template_engine = None
+    content_type = None
+    extra_context = {'title': '首页', 'classContent': ''}
+
+    # 重新定义模板上下文的获取方式
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['commodityInfos'] = CommodityInfos.objects.order_by('-sold').all()[:8]
         types = Types.objects.all()
+        # 宝宝服饰
         cl = [x.seconds for x in types if x.firsts == '儿童服饰']
         context['clothes'] = CommodityInfos.objects.filter(types__in=cl).order_by('-sold')[:5]
+        # 奶粉辅食
         fl = [x.seconds for x in types if x.firsts == '奶粉辅食']
         context['food'] = CommodityInfos.objects.filter(types__in=fl).order_by('-sold')[:5]
+        # 宝宝用品
         gl = [x.seconds for x in types if x.firsts == '儿童用品']
         context['goods'] = CommodityInfos.objects.filter(types__in=gl).order_by('-sold')[:5]
         return context
 
-    def get(self, request, *args, **kwargs):  # 定义GET请求处理方法
+    # 定义HTTP的GET请求处理方法
+    # 参数request代表HTTP请求信息
+    # 若路由设有路由变量，则可从参数kwargs里获取
+    def get(self, request, *args, **kwargs):
         pass
-        context = self.get_context_data(**kwargs)  # get_context_data获取整个视图所有变量并赋值给context
-        return self.render_to_response(context)  # 将context传递给render_··方法
+        context = self.get_context_data(**kwargs)
+        return self.render_to_response(context)
 
-    def post(self, request, *args, **kwargs):  # 与GET请求处理方法类似
+    # 定义HTTP的POST请求处理方法
+    # 参数request代表HTTP请求信息
+    # 若路由设有路由变量，则可从参数kwargs里获取
+    def post(self, request, *args, **kwargs):
         pass
         context = self.get_context_data(**kwargs)
         return self.render_to_response(context)
