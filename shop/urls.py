@@ -10,5 +10,10 @@ urlpatterns = [
     path('shopper', include(('shopper.urls', 'shopper'), namespace='shopper')),
     # 配置媒体资源的路由信息
     re_path('media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}, name='media'),
+    # 定义静态资源的路由信息
+    re_path('static/(?P<path>.*)', serve, {'document_root': settings.STATIC_ROOT}, name='static'),
 
 ]
+from index import views
+handler404 = views.page_not_found
+handler500 = views.page_error

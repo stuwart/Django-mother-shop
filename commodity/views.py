@@ -59,3 +59,10 @@ def collectView(request):
         result['result'] = '收藏成功'
         request.session['likes'] = likes + [int(id)]
     return JsonResponse(result)
+
+
+def page_not_found(request, exception):
+    return render(request,'404.html',status=404)
+
+def page_errpr(request):
+    return render(request,'404.html',status=500)

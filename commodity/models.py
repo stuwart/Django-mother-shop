@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.html import format_html
 
 # Create your models here.
 
@@ -36,3 +36,16 @@ class CommodityInfos(models.Model):
     class Meta:
         verbose_name = '商品信息'
         verbose_name_plural = '商品信息'
+
+    def colored_name(self):
+        if '童装' in self.types:
+            color_code = 'red'
+        else:
+            color_code = 'blue'
+        return  format_html(
+            '<span style="color:{ };">{ }</span>',
+            color_code,
+            self.types
+        )
+    colored_name.short_description = '带颜色的商品类型'
+
