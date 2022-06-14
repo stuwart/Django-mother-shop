@@ -14,11 +14,11 @@ SECRET_KEY = 'django-insecure-ahf6gl28_gpfa_dfiqk8i6o&tmo!^^z*8#$q&7r@r%gwp1f@6h
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # 调试模式
-DEBUG = True
+DEBUG = False
 
 # 设置可访问的域名，DEBUG为False时为必填项，
 # 要设置所有域名可访问，可设置成 ['*']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 # App列表，告诉Django有哪些App
@@ -115,17 +115,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'pstatic'),  #设置静态资源文件夹
+)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'pstatic')
-)
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'AllStatic')
+
+
+
 
 MEDIA_URL = '/media/'  #媒体资源文件夹
 
