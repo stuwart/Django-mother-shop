@@ -133,7 +133,7 @@
 
     $("#settlement").on('click',function(){
         var total = $(".pieces-total").text()
-        window.location = "{% url 'shopper:pays' %}?total=" + total
+        window.location = "{% url 'shopper:shopcart' %}?total=" + total
     })
 });
 

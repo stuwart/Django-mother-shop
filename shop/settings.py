@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-ahf6gl28_gpfa_dfiqk8i6o&tmo!^^z*8#$q&7r@r%gwp1f@6h
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # 调试模式
-DEBUG = False
+DEBUG = True
 
 # 设置可访问的域名，DEBUG为False时为必填项，
 # 要设置所有域名可访问，可设置成 ['*']
@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'UTC'
 
@@ -118,7 +118,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'pstatic'),  #设置静态资源文件夹
 )
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

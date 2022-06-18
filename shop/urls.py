@@ -14,6 +14,3 @@ urlpatterns = [
     re_path('static/(?P<path>.*)', serve, {'document_root': settings.STATIC_ROOT}, name='static'),
 
 ]
-from index import views
-handler404 = views.page_not_found
-handler500 = views.page_error

@@ -91,7 +91,7 @@ def loginView(request):
 
 def logoutView(request):
     # 使用内置函数logout退出用户登录状态
-    logout(request)
+    # logout(request)
     # 网页自动跳转到首页
     return redirect(reverse('index:index'))
 
