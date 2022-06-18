@@ -116,7 +116,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'pstatic'),  #设置静态资源文件夹
+    os.path.join(BASE_DIR, 'pstatic'),
 )
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
@@ -126,15 +126,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-
-
-
-
-MEDIA_URL = '/media/'  #媒体资源文件夹
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 ROOT_URLCONF = 'shop.urls'
